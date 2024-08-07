@@ -3,7 +3,6 @@
 #include <list>
 #include <map>
 
-// Classe Pessoa
 class Pessoa {
 public:
     std::string nome;
@@ -25,17 +24,14 @@ public:
     }
 
     bool verificarIdade(int idade) {
-        // Implementação fictícia
         return true;
     }
 
     bool validarDocumento() {
-        // Implementação fictícia
         return true;
     }
 };
 
-// Classe Estudante herdando de Pessoa
 class Estudante : public Pessoa {
 public:
     int matricula;
@@ -55,12 +51,10 @@ public:
     }
 
     bool verificarStatus() {
-        // Implementação fictícia
         return true;
     }
 };
 
-// Classe Professor herdando de Pessoa
 class Professor : public Pessoa {
 public:
     int idProfessor;
@@ -79,7 +73,6 @@ public:
     }
 };
 
-// Classe Disciplina
 class Disciplina {
 public:
     int id;
@@ -98,7 +91,6 @@ public:
     }
 };
 
-// Classe Turma
 class Turma {
 public:
     int idTurma;
@@ -118,7 +110,6 @@ public:
 };
 
 int main() {
-    // Exemplo de uso das classes
     Estudante estudante;
     estudante.nome = "João";
     estudante.matricula = 12345;
