@@ -1,0 +1,135 @@
+#include <iostream>
+#include <string>
+#include <list>
+#include <map>
+
+// Classe Pessoa
+class Pessoa {
+public:
+    std::string nome;
+    int dataNascimento;
+    int documentoRG;
+    std::string endereco;
+    int telefone;
+
+    void atualizarTelefone(int novoTelefone) {
+        telefone = novoTelefone;
+    }
+
+    void exibirInformacoes() {
+        std::cout << "Nome: " << nome << "\n";
+        std::cout << "Data de Nascimento: " << dataNascimento << "\n";
+        std::cout << "Documento RG: " << documentoRG << "\n";
+        std::cout << "Endereço: " << endereco << "\n";
+        std::cout << "Telefone: " << telefone << "\n";
+    }
+
+    bool verificarIdade(int idade) {
+        // Implementação fictícia
+        return true;
+    }
+
+    bool validarDocumento() {
+        // Implementação fictícia
+        return true;
+    }
+};
+
+// Classe Estudante herdando de Pessoa
+class Estudante : public Pessoa {
+public:
+    int matricula;
+    std::string curso;
+    int anoIngresso;
+    float mediaNotas;
+    std::map<std::string, float> notas;
+
+    void desmatricular(std::string disciplina) {
+        notas.erase(disciplina);
+    }
+
+    void consultarNotas() {
+        for (const auto& nota : notas) {
+            std::cout << "Disciplina: " << nota.first << " Nota: " << nota.second << "\n";
+        }
+    }
+
+    bool verificarStatus() {
+        // Implementação fictícia
+        return true;
+    }
+};
+
+// Classe Professor herdando de Pessoa
+class Professor : public Pessoa {
+public:
+    int idProfessor;
+    std::string formacao;
+    std::map<std::string, std::string> horarioAulas;
+    float salario;
+
+    void planejarAula(std::string disciplina, std::string horario) {
+        horarioAulas[disciplina] = horario;
+    }
+
+    void consultarHorario() {
+        for (const auto& aula : horarioAulas) {
+            std::cout << "Disciplina: " << aula.first << " Horário: " << aula.second << "\n";
+        }
+    }
+};
+
+// Classe Disciplina
+class Disciplina {
+public:
+    int id;
+    std::string nome;
+    int cargaHoraria;
+    std::string descricao;
+
+    void atualizarCargaHoraria(int novaCargaHoraria) {
+        cargaHoraria = novaCargaHoraria;
+    }
+
+    void exibirInformacoes() {
+        std::cout << "Nome: " << nome << "\n";
+        std::cout << "Carga Horária: " << cargaHoraria << "\n";
+        std::cout << "Descrição: " << descricao << "\n";
+    }
+};
+
+// Classe Turma
+class Turma {
+public:
+    int idTurma;
+    Professor professor;
+    std::list<Estudante> listaEstudantes;
+    std::string horario;
+
+    void removerEstudante(Estudante estudante) {
+        listaEstudantes.remove(estudante);
+    }
+
+    void consultarListaEstudantes() {
+        for (const auto& estudante : listaEstudantes) {
+            estudante.exibirInformacoes();
+        }
+    }
+};
+
+int main() {
+    // Exemplo de uso das classes
+    Estudante estudante;
+    estudante.nome = "João";
+    estudante.matricula = 12345;
+    estudante.curso = "Engenharia";
+    estudante.anoIngresso = 2022;
+    estudante.mediaNotas = 8.5;
+    estudante.notas["Matemática"] = 9.0;
+    estudante.notas["Física"] = 8.0;
+
+    estudante.exibirInformacoes();
+    estudante.consultarNotas();
+
+    return 0;
+}
